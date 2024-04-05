@@ -40,7 +40,6 @@ public class RegisterServlet extends HttpServlet {
 		Long phoneNumber = Long.parseLong(request.getParameter("phone_number"));
 		String password = request.getParameter("password");
 		String retypePassword = request.getParameter("retypePassword");
-		System.out.println(phoneNumber);
 		UserModel userModel = new UserModel(firstName, lastName, userName, email, phoneNumber, password);
 
 		int result = dbController.addUser(userModel);

@@ -30,12 +30,12 @@ public class AuthenticationFilter implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
-		String uri =  req.getRequestURL().toString();
+		String uri = req.getRequestURL().toString();
 		if (uri.endsWith("RegisterServlet")) {
 			chain.doFilter(req, res);
 			return;
 		}
-		if (uri.endsWith("adminDashboard.jsp")) {	
+		if (uri.endsWith("adminDashboard.jsp")) {
 			System.out.println(uri);
 			chain.doFilter(req, res);
 			return;
@@ -45,6 +45,7 @@ public class AuthenticationFilter implements Filter {
 		boolean isLogoutServlet = uri.endsWith("LogoutServlet");
 		HttpSession session = req.getSession(false);
 		boolean isLoggedIn = session != null && session.getAttribute("user") != null;
+
 		if (isLoggedIn && isLogin) {
 			System.out.println("Hello 11");
 			res.sendRedirect(req.getContextPath() + StringUtils.HOME_PAGE);
