@@ -9,14 +9,13 @@
 }
 </style>
 
-<div  class="flex text-2xl pb-[80px]  justify-center  " id="header">
+<div class="flex text-2xl pb-[80px] m-h-[40px] justify-center" id="header">
 	<div
-		
-		class="fixed w-full  flex items-center border-b border-black justify-between bg-gray-300">
-		<div >
-			<a href="${pageContext.request.contextPath}/ProductServlet">LOGO</a>
+		class="fixed w-full h-[75px] flex items-center border-b border-black justify-between bg-gray-300">
+		<div>
+			<a href="${pageContext.request.contextPath}/ProductServlet">LaptopNexus</a>
 		</div>
-		<div  class="flex flex-col justify-center">
+		<div class="flex items-center justify-center flex-grow">
 			<form action="${pageContext.request.contextPath}/ProductServlet"
 				method="get">
 				<input type="search" name="name"
@@ -46,9 +45,6 @@
 	</div>
 </div>
 <script src="https://cdn.tailwindcss.com"></script>
-<script type="text/javascript"
-	src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
 
 

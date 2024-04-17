@@ -50,7 +50,7 @@
 							<div class="mr-2 flex-grow">
 								<label class="block text-gray-700 text-sm font-bold mb-2"
 									for="minPrice">From:</label> <input type="number" id="minPrice"
-									name="minPrice" min="299" step="10"
+									name="minPrice" min="299"
 									class="w-full bg-white border border-gray-300 rounded px-2 py-1">
 							</div>
 							<div class="flex-grow">
@@ -93,7 +93,7 @@
 
 			<div id="carousel"
 				class="w-[82%] flex items-center justify-center text-8xl bg-red-200 ml-auto h-[60vh]  ">
-				<h1>Carousel</h1>
+				<img alt="" src="">
 			</div>
 			<div class="w-[82%] ml-auto grid grid-cols-3 gap-4">
 				<%
@@ -107,7 +107,8 @@
 						<div class="flex gap-2">
 							<a
 								href='${pageContext.request.contextPath}/ProductServlet/<%=product.getProductId()%>'>
-								<img alt=""
+								<img
+								alt="https://miro.medium.com/v2/resize:fit:1200/1*0HIdwBOPpG4d5sPqw6EA8Q.jpeg"
 								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScPdsC0S6PwDKC2Vz3ILck4OE-Pun5uF_Lz_sWuAl4Lg&s">
 							</a>
 							<div class="*:mt-2 *:w-20">
@@ -132,18 +133,17 @@
 							<%=product.getCategoryName()%></p>
 					</div>
 					<div class="flex justify-between mt-2">
-						<form class="flex justify-between mt-2 w-full" method="post"
+						<form class="flex justify-between mt-2 w-full"
 							action="${pageContext.request.contextPath}/Cart">
-							<button name="cart" value="<%=product.getProductId()%>"
+							<button name="id" value="<%=product.getProductId()%>"
 								class="border rounded-xl p-2 bg-green-500">Add To Cart</button>
 						</form>
-							<button class="border rounded-xl p-2 bg-blue-500">Buy
-								Now</button>
+						<button class="border rounded-xl p-2 bg-blue-500">Buy Now</button>
 					</div>
 				</div>
 				<%
 				}
-				} else {
+				} else if (products.isEmpty()) {
 				%>
 				<div class="flex items-center justify-center">
 					<h1 class="text-6xl text- Black">NO Products Found</h1>

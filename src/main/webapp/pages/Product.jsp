@@ -35,7 +35,7 @@
 				<h2 class="text-lg font-semibold mb-2"><%=product.getName()%></h2>
 				<p class="text-gray-700 mb-2"><%=product.getDescription()%></p>
 				<p class="text-gray-900 font-semibold mb-2">
-				Price:$<%=product.getPrice()%></p>
+					Price:$<%=product.getPrice()%></p>
 				<p class="text-gray-700 font-semibold">
 					Stock:
 					<%=product.getStock()%></p>
@@ -51,7 +51,7 @@
 		</div>
 		<%
 		}
-		} else {
+		} else if (products.isEmpty()) {
 		%>
 		<div class="flex items-center justify-center">
 			<h1 class="text-6xl text- Black">NO Products Found</h1>

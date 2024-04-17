@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.json.JSONFilter;
 
@@ -41,7 +42,11 @@ public class Cart extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		DatabaseController db = new DatabaseController();
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		session.setAttribute("cart", db.getProduct(Integer.parseInt(request.getParameter("id"))));
+		request.getRequestDispatcher(StringUtils.CART_PAGE).forward(request, response);
 	}
 
 	/**
@@ -52,8 +57,7 @@ public class Cart extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		DatabaseController db = new DatabaseController();
-		request.setAttribute("Product", db.getProduct(1));
-		request.getRequestDispatcher(StringUtils.CART_PAGE).forward(request, response);
+		System.out.println(request.getParameter(""));
+
 	}
 }
