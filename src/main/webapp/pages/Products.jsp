@@ -93,7 +93,7 @@
 
 			<div id="carousel"
 				class="w-[82%] flex items-center justify-center text-8xl bg-red-200 ml-auto h-[60vh]  ">
-				<img alt="" src="">
+		Carousel				
 			</div>
 			<div class="w-[82%] ml-auto grid grid-cols-3 gap-4">
 				<%
@@ -136,7 +136,7 @@
 						<form class="flex justify-between mt-2 w-full"
 							action="${pageContext.request.contextPath}/Cart">
 							<button name="id" value="<%=product.getProductId()%>"
-								class="border rounded-xl p-2 bg-green-500">Add To Cart</button>
+								class="border rounded-xl p-2 bg-green-500"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</button>
 						</form>
 						<button class="border rounded-xl p-2 bg-blue-500">Buy Now</button>
 					</div>

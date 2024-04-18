@@ -21,7 +21,7 @@ public class DatabaseController {
 		String pass = "";
 		return DriverManager.getConnection(url, user, pass);
 	}
-
+//Fetching All Products Data
 	public List<ProductModel> getAllProducts() {
 		List<ProductModel> products = new ArrayList<>();
 		try (Connection con = getConnection()) {
@@ -42,7 +42,7 @@ public class DatabaseController {
 		}
 		return products;
 	}
-
+//Filter Products With Price And Category
 	public List<ProductModel> filterProducts(int minPrice, int maxPrice, int category) {
 		List<ProductModel> products = new ArrayList<>();
 		try (Connection con = getConnection()) {
@@ -117,5 +117,9 @@ public class DatabaseController {
 			ex.printStackTrace();
 		}
 		return product;
+	}
+	
+	public void addToCart() {
+		
 	}
 }
