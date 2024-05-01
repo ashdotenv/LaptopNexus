@@ -16,6 +16,7 @@ public class ProductModel {
 	private int productId;
 	private String categoryName;
 	private String ImageUrlFromPart;
+	private String imageUrl;
 
 	public ProductModel(String name, String description, int stock, float price, int category, Part imageData) {
 		super();
@@ -27,6 +28,7 @@ public class ProductModel {
 		this.categoryName = getCategoryName();
 		this.productId = getProductId();
 		this.ImageUrlFromPart = getImageUrl(imageData);
+		this.imageUrl = getImageUrl();
 	}
 
 	public ProductModel() {
@@ -122,6 +124,14 @@ public class ProductModel {
 
 	public String getImageUrlFromPart() {
 		return ImageUrlFromPart;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 	public void setImageUrlFromPart(Part part) {

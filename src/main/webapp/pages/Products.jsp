@@ -100,6 +100,7 @@
 				if (products != null) {
 					for (ProductModel product : products) {
 				%>
+
 				<div
 					class="bg-white p-4 border flex flex-col justifu border-gray-300 shadow-lg rounded-xl">
 					<div>
@@ -107,9 +108,9 @@
 							<a
 								href='${pageContext.request.contextPath}/ProductServlet/<%=product.getProductId()%>'>
 								<img
-								src="https://itechstore.com.np/_ipx/f_webp/img/product/7f489ded-7ccb-45d1-b4bf-d9a698f4b2a2/hp_victus_15_laptop.png" />
-
+								src="data:image/jpeg;base64,C:/Users/ashis/eclipse-workspace/LaptopNexus/src/main/webapp/resources/images/3.jpg" />
 							</a>
+
 						</div>
 						<h2 class="text-lg font-semibold mb-2"><%=product.getName()%></h2>
 						<p class="text-gray-700 mb-2"><%=product.getDescription()%></p>

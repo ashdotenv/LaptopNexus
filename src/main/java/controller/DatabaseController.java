@@ -37,6 +37,7 @@ public class DatabaseController {
 				allProducts.setStock(rs.getInt("stock"));
 				allProducts.setCategoryName(rs.getString("category_name"));
 				allProducts.setProductId(rs.getInt("product_id"));
+				allProducts.setImageUrl(rs.getString("images"));
 				products.add(allProducts);
 			}
 		} catch (SQLException | ClassNotFoundException ex) {
@@ -113,6 +114,7 @@ public class DatabaseController {
 						singleProduct.setStock(Integer.parseInt(rs.getString("stock")));
 						singleProduct.setCategoryName(rs.getString("category_name"));
 						singleProduct.setProductId(rs.getInt("product_id"));
+						singleProduct.setImageUrl(rs.getString("images"));
 						product.add(singleProduct);
 					}
 				}
