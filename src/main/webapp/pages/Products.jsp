@@ -16,7 +16,6 @@
 
 	if (errorMessage != null && !errorMessage.isEmpty()) {
 	%>
-	<!-- Display error message -->
 	<div class="alert alert-danger mt-2" role="alert">
 		<%=errorMessage%>
 	</div>
@@ -27,7 +26,6 @@
 	<%
 	if (successMessage != null && !successMessage.isEmpty()) {
 	%>
-	<!-- Display success message -->
 	<div class="alert alert-success mt-2" role="alert">
 		<%=successMessage%>
 	</div>
@@ -78,7 +76,6 @@
 							<option value="8">Student</option>
 							<option value="9">Multimedia</option>
 							<option value="10">Thin and Light</option>
-
 						</select>
 					</div>
 					<div class="flex justify-center">
@@ -92,9 +89,11 @@
 		<div class="flex-[13] mr-auto ">
 
 			<div id="carousel"
-				class="w-[82%] flex items-center justify-center text-8xl bg-red-200 ml-auto h-[60vh]  ">
-		Carousel				
+				class="w-[82%] flex relative items-center justify-center text-8xl bg-red-200 ml-auto h-[60vh]">
+				<img class="object-cover object-fill  w-full h-full z-[1]" alt=""
+					src="https://itti.com.np/_next/image?url=https%3A%2F%2Fadmin.itti.com.np%2Fstorage%2Fbanner%2Fmobile%2F57f345c0-8b2e-4cba-84d1-043b5acad21e.png&w=3840&q=75">
 			</div>
+
 			<div class="w-[82%] ml-auto grid grid-cols-3 gap-4">
 				<%
 				ArrayList<ProductModel> products = (ArrayList<ProductModel>) request.getAttribute("Products");
@@ -108,18 +107,9 @@
 							<a
 								href='${pageContext.request.contextPath}/ProductServlet/<%=product.getProductId()%>'>
 								<img
-								alt="https://miro.medium.com/v2/resize:fit:1200/1*0HIdwBOPpG4d5sPqw6EA8Q.jpeg"
-								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScPdsC0S6PwDKC2Vz3ILck4OE-Pun5uF_Lz_sWuAl4Lg&s">
-							</a>
-							<div class="*:mt-2 *:w-20">
-								<img class="h-12" alt=""
-									src="https://miro.medium.com/v2/resize:fit:1200/1*0HIdwBOPpG4d5sPqw6EA8Q.jpeg">
+								src="https://itechstore.com.np/_ipx/f_webp/img/product/7f489ded-7ccb-45d1-b4bf-d9a698f4b2a2/hp_victus_15_laptop.png" />
 
-								<img class="h-12" alt=""
-									src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUOkcBkC9CvlcYbUYUNQ_Ni4iVyLgHTnhOCCVC9cJ6ID8HWB0OclQnrrT4EGHX_byS-7Q&usqp=CAU">
-								<img class="h-12 object-cover" alt=""
-									src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkMu7tVxnmSP3uFylfug3vLGlAny5-iIgsCn1DEQFLBGtvmRV6T6H3uOTs76n8wkz3QRU&usqp=CAU">
-							</div>
+							</a>
 						</div>
 						<h2 class="text-lg font-semibold mb-2"><%=product.getName()%></h2>
 						<p class="text-gray-700 mb-2"><%=product.getDescription()%></p>
@@ -132,13 +122,19 @@
 							Cateogry :
 							<%=product.getCategoryName()%></p>
 					</div>
-					<div class="flex justify-between mt-2">
-						<form class="flex justify-between mt-2 w-full"
+					<div class="flex justify-between ">
+						<form class="mt-2 "
 							action="${pageContext.request.contextPath}/Cart">
 							<button name="id" value="<%=product.getProductId()%>"
-								class="border rounded-xl p-2 bg-green-500"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</button>
+								class="border rounded-xl p-2 bg-green-500">
+								<i class="fa-solid fa-cart-shopping"></i> Add To Cart
+							</button>
 						</form>
-						<button class="border rounded-xl p-2 bg-blue-500">Buy Now</button>
+						<form class=" mt-2 "
+							action="${pageContext.request.contextPath}/buyNow">
+							<button name="id" value="<%=product.getProductId()%>"
+								class="border rounded-xl p-2 bg-blue-500">Buy Now</button>
+						</form>
 					</div>
 				</div>
 				<%

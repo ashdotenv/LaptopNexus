@@ -1,15 +1,23 @@
 package model;
 
-public class ProductModel {
-	String name;
-	String description;
-	int stock;
-	float price;
-	int category;
-	int productId;
-	String categoryName;
+import java.io.File;
+import java.io.IOException;
 
-	public ProductModel(String name, String description, int stock, float price, int category) {
+import javax.servlet.http.Part;
+
+import util.StringUtils;
+
+public class ProductModel {
+	private String name;
+	private String description;
+	private int stock;
+	private float price;
+	private int category;
+	private int productId;
+	private String categoryName;
+	private String ImageUrlFromPart;
+
+	public ProductModel(String name, String description, int stock, float price, int category, Part imageData) {
 		super();
 		this.name = name;
 		this.description = description;
@@ -18,11 +26,11 @@ public class ProductModel {
 		this.category = category;
 		this.categoryName = getCategoryName();
 		this.productId = getProductId();
+		this.ImageUrlFromPart = getImageUrl(imageData);
 	}
 
 	public ProductModel() {
-
-	};
+	}
 
 	public int getProductId() {
 		return productId;
@@ -30,7 +38,7 @@ public class ProductModel {
 
 	public void setProductId(int productId) {
 		this.productId = productId;
-	};
+	}
 
 	public String getName() {
 		return name;
@@ -78,6 +86,46 @@ public class ProductModel {
 
 	public void setPrice(float price) {
 		this.price = price;
+	}
+
+	private String getImageUrl(Part imagePart) {
+		String savePath = StringUtils.SAVE_PATH;
+		String fileName = null;
+		try {
+			String contentDisp = imagePart.getHeader("content-disposition");
+			String[] items = contentDisp.split(";");
+			for (String s : items) {
+				if (s.trim().startsWith("filename")) {
+					fileName = s.substring(s.indexOf("=") + 2, s.length() - 1);
+					break;
+				}
+			}
+
+			if (fileName == null || fileName.isEmpty()) {
+				fileName = "default.jpg";
+			}
+
+			File fileSaveDir = new File(savePath);
+			if (!fileSaveDir.exists()) {
+				fileSaveDir.mkdirs();
+			}
+			String filePath = savePath + File.separator + fileName;
+			imagePart.write(filePath);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+			fileName = null;
+		}
+
+		return fileName;
+	}
+
+	public String getImageUrlFromPart() {
+		return ImageUrlFromPart;
+	}
+
+	public void setImageUrlFromPart(Part part) {
+		this.ImageUrlFromPart = getImageUrl(part);
 	}
 
 }

@@ -18,7 +18,9 @@ public class StringUtils {
 			+ "AND category = ?; " + " ";
 
 	public static final String CHECK_ADMIN = "SELECT USERNAME FROM USERS WHERE USERNAME=? AND ROLE='Admin' ";
+	public static final String INSERT_IMAGE = "INSERT INTO IMAGES(imageName,image) values(?,?) ";
 	public static final String GET_PRODUCT = "SELECT * from  products p join categories c on p.category=c.category_id  where product_id=? ";
+	public static final String INSERT_PRODUCT = "INSERT INTO products (name, description, stock, category, price, images) VALUES ( ?, ?, ?, ?, ?, ?)";
 	// End SQL Queries
 
 	// Register page
@@ -49,7 +51,7 @@ public class StringUtils {
 	public static final String ERROR_LOGIN_MESSAGE = "Either username or password is not correct!";
 	// End login page message
 
-	// Admin
+	// Admin3
 	public static final String SUCCESS_MESSAGE = "successMessage";
 	public static final String ERROR_MESSAGE = "errorMessage";
 	// End string messages
@@ -68,6 +70,8 @@ public class StringUtils {
 	public static final String REGISTER_SERVLET = "/RegisterServlet";
 	public static final String LOGIN_SERVLET = "/LoginServlet";
 	public static final String PRODUCT_SERVLET = "/ProductServlet";
+	public static final String WILDCARD_SERVLET = "/ProductServlet/*";
+	public static final String SAVE_PATH = "C:/Users/ashis/eclipse-workspace/LaptopNexus/src/main/webapp/resources/images/";
 	// End Servlet Route
 
 }

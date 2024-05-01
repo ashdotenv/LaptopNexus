@@ -1,12 +1,12 @@
 package controller.servlets;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import controller.DatabaseController;
 import util.StringUtils;
@@ -36,8 +36,7 @@ public class ProductServlet extends HttpServlet {
 			String search = request.getParameter("name");
 			try {
 				DatabaseController db = new DatabaseController();
-				request.setAttribute("Products",
-						search != null ? db.searchProducts("%" + search + "%") : db.getAllProducts());
+				request.setAttribute("Products", search != null ? db.searchProducts(search) : db.getAllProducts());
 			} catch (Exception e) {
 				e.printStackTrace();
 				request.setAttribute(StringUtils.ERROR_MESSAGE, "Failed to retrieve products: " + e.getMessage());

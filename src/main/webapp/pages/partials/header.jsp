@@ -13,7 +13,8 @@
 }
 </style>
 
-<div class=" flex text-2xl pb-[76px] h-[40px] justify-center">
+<div id="navLinks"
+	class="navLinks  flex text-2xl pb-[76px] h-[40px] justify-center">
 	<div
 		class="p-2 fixed w-full h-[75px] flex items-center border-b border-black justify-between bg-gray-300">
 		<div>
@@ -43,6 +44,7 @@
 				class="fa-solid fa-user"></i> Dashboard</a> <a
 				href="${pageContext.request.contextPath}/Logout">Logout <i
 				class="fa-solid fa-right-from-bracket"></i></a>
+
 			<%
 			} else {
 			%>
@@ -50,14 +52,13 @@
 				class="fa-solid fa-right-to-bracket"></i></a> <a
 				href="${pageContext.request.contextPath}/RegisterServlet">
 				Signup <i class="fa-solid fa-user-plus"></i>
-			</a>
+			</a> <a href="${pageContext.request.contextPath}/AboutUs"> About Us</a>
 			<%
 			}
 			%>
 		</div>
 	</div>
 </div>
-
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://kit.fontawesome.com/78d9ee46c5.js"
 	crossorigin="anonymous"></script>

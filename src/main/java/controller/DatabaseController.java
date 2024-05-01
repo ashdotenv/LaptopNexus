@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import model.ProductModel;
 import util.StringUtils;
 
@@ -21,6 +22,7 @@ public class DatabaseController {
 		String pass = "";
 		return DriverManager.getConnection(url, user, pass);
 	}
+
 //Fetching All Products Data
 	public List<ProductModel> getAllProducts() {
 		List<ProductModel> products = new ArrayList<>();
@@ -42,6 +44,7 @@ public class DatabaseController {
 		}
 		return products;
 	}
+
 //Filter Products With Price And Category
 	public List<ProductModel> filterProducts(int minPrice, int maxPrice, int category) {
 		List<ProductModel> products = new ArrayList<>();
@@ -71,6 +74,7 @@ public class DatabaseController {
 	}
 
 	public List<ProductModel> searchProducts(String Search) {
+		Search = "%" + Search + "%";
 		List<ProductModel> products = new ArrayList<>();
 		try (Connection con = getConnection()) {
 			try (PreparedStatement st = con.prepareStatement(StringUtils.GET_SEARCH_PRODUCTS)) {
@@ -118,8 +122,22 @@ public class DatabaseController {
 		}
 		return product;
 	}
-	
-	public void addToCart() {
-		
+
+	public int addProduct(ProductModel product) {
+		try (Connection con = getConnection();
+				PreparedStatement st = con.prepareStatement(StringUtils.INSERT_PRODUCT)) {
+			st.setString(1, product.getName());
+			st.setString(2, product.getDescription());
+			st.setInt(3, product.getStock());
+			st.setInt(4, product.getCategory());
+			st.setFloat(5, product.getPrice());
+			st.setString(6, product.getImageUrlFromPart());
+			int rowsAffected = st.executeUpdate();
+			return rowsAffected;
+		} catch (SQLException | ClassNotFoundException e) {
+			System.out.println(e.getMessage());
+			return 0;
+		}
 	}
+
 }

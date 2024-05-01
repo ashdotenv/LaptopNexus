@@ -9,7 +9,7 @@
 	<h1 class="text-center text-3xl mt-8 font-bold">Add Product</h1>
 	<div class="max-w-md mx-auto h-[600px] mt-20 z-90">
 		<form action="${pageContext.request.contextPath}/AddProductServlet"
-			method="post">
+			method="post" enctype="multipart/form-data">
 			<div class="mb-4">
 				<label for="name" class="block text-gray-700 font-bold mb-2">Product
 					Name:</label> <input type="text" id="name" name="name"
@@ -22,15 +22,14 @@
 			</div>
 			<div class="mb-4">
 				<label for="price" class="block text-gray-700 font-bold mb-2">Price:</label>
-				<input type="number" id="price" name="price" step="0.01"
+				<input type="number" id="price" name="price"
 					class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
 			</div>
 			<div class="mb-4">
 				<label for="stock" class="block text-gray-700 font-bold mb-2">Stock:</label>
-				<input type="number" id="stock" name="stock"
+				<input type="number" min=1 id="stock" name="stock"
 					class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
 			</div>
-
 			<label for="category" class="block text-gray-700 font-bold mb-2">Category:</label>
 			<select id="category" name="category"
 				class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
@@ -45,8 +44,14 @@
 				<option value="8">Student</option>
 				<option value="9">Multimedia</option>
 				<option value="10">Thin and Light</option>
-
 			</select>
+			<div class="mb-4">
+				<label for="image" class="block text-gray-700 font-bold mb-2">Image:</label>
+				<input id="image" type="file" accept="image/*" id="image" multiple
+					name="image"
+					class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+			</div>
+
 			<div class="flex items-center justify-between mt-5">
 				<button type="submit"
 					class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
@@ -56,6 +61,5 @@
 	</form>
 	</div>
 	<%@ include file="./partials/footer.jsp"%>
-
 </body>
 </html>

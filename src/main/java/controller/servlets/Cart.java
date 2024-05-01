@@ -1,11 +1,6 @@
 package controller.servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,10 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.tomcat.util.json.JSONFilter;
-
 import controller.DatabaseController;
-import model.ProductModel;
 import util.StringUtils;
 
 /**
@@ -57,7 +49,6 @@ public class Cart extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		System.out.println(request.getParameter(""));
 
 	}
 }
