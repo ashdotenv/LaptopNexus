@@ -57,6 +57,7 @@
 									name="maxPrice" step="10"
 									class="w-full bg-white border border-gray-300 rounded px-2 py-1">
 							</div>
+
 						</div>
 
 					</div>
@@ -89,10 +90,11 @@
 		<div class="flex-[13] mr-auto ">
 
 			<div id="carousel"
-				class="w-[82%] flex relative items-center justify-center text-8xl bg-red-200 ml-auto h-[60vh]">
-				<img class="object-cover object-fill  w-full h-full z-[1]" alt=""
+				class="w-[82%] flex relative items-center z-[-1] justify-center text-8xl bg-red-200 ml-auto h-[60vh] overflow-hidden">
+				<img class="object-cover object-fill w-full h-full " alt=""
 					src="https://itti.com.np/_next/image?url=https%3A%2F%2Fadmin.itti.com.np%2Fstorage%2Fbanner%2Fmobile%2F57f345c0-8b2e-4cba-84d1-043b5acad21e.png&w=3840&q=75">
 			</div>
+
 
 			<div class="w-[82%] ml-auto grid grid-cols-3 gap-4">
 				<%
@@ -106,10 +108,9 @@
 					<div>
 						<div class="flex gap-2">
 							<a
-								href='${pageContext.request.contextPath}/ProductServlet/<%=product.getProductId()%>'>
-								<img
-								src="data:image/jpeg;base64,C:/Users/ashis/eclipse-workspace/LaptopNexus/src/main/webapp/resources/images/3.jpg" />
-							</a>
+								href='<%=request.getContextPath()%>/ProductServlet/<%=product.getProductId()%>'>
+								<img src="<%=StringUtils.SAVE_PATH + product.getImageUrl()%>" alt="Product" />
+							</a> 0
 
 						</div>
 						<h2 class="text-lg font-semibold mb-2"><%=product.getName()%></h2>
@@ -125,7 +126,7 @@
 					</div>
 					<div class="flex justify-between ">
 						<form class="mt-2 "
-							action="${pageContext.request.contextPath}/Cart">
+							action="${pageContext.request.contextPath}/CartServlet">
 							<button name="id" value="<%=product.getProductId()%>"
 								class="border rounded-xl p-2 bg-green-500">
 								<i class="fa-solid fa-cart-shopping"></i> Add To Cart

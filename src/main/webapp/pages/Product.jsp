@@ -1,3 +1,4 @@
+<%@page import="util.StringUtils"%>
 <%@page import="model.ProductModel"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -17,8 +18,9 @@
 	%>
 	<div class="flex h-screen mt-10">
 		<div class="flex h-screen 	">
-			<img style="height:600px" class="object-cover object-fill w-full h-full z-[1]" alt=""
-				src="https://itechstore.com.np/_ipx/f_webp/img/product/7f489ded-7ccb-45d1-b4bf-d9a698f4b2a2/hp_victus_15_laptop.png">
+			<img style="height: 600px"
+				class="object-cover object-fill w-full h-full z-[1]"
+				src="<%=StringUtils.SAVE_PATH + product.getImageUrl()%>" />
 		</div>
 		<div class="flex flex-col text-xl">
 			<div class="mb-4">
@@ -53,6 +55,7 @@
 		<h1 class="text-6xl text- Black">NO Products Found</h1>
 	</div>
 	<%
+
 	}
 	%>
 	<%@ include file="./partials/footer.jsp"%>

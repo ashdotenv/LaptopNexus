@@ -10,19 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.DatabaseController;
-import util.StringUtils;
+import model.CartModel;
 
 /**
  * Servlet implementation class Cart
  */
 @WebServlet(asyncSupported = true, urlPatterns = { "/Cart" })
-public class Cart extends HttpServlet {
+public class CartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Cart() {
+	public CartServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -33,12 +33,14 @@ public class Cart extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		HttpSession session = request.getSession();
+		int user_id = (int) session.getAttribute("user_id");
+		int quantity = (int) request.getAttribute("quantity");
+		int product_id = Integer.parseInt(request.getParameter("id"));
+		CartModel cart = new CartModel(user_id, quantity, product_id);
 		DatabaseController db = new DatabaseController();
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		session.setAttribute("cart", db.getProduct(Integer.parseInt(request.getParameter("id"))));
-		request.getRequestDispatcher(StringUtils.CART_PAGE).forward(request, response);
+		db.addToCart(cart);
 	}
 
 	/**
@@ -47,8 +49,7 @@ public class Cart extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
-
 	}
+
 }

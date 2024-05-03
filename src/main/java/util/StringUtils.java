@@ -21,6 +21,8 @@ public class StringUtils {
 	public static final String INSERT_IMAGE = "INSERT INTO IMAGES(imageName,image) values(?,?) ";
 	public static final String GET_PRODUCT = "SELECT * from  products p join categories c on p.category=c.category_id  where product_id=? ";
 	public static final String INSERT_PRODUCT = "INSERT INTO products (name, description, stock, category, price, images) VALUES ( ?, ?, ?, ?, ?, ?)";
+	public static final String INSERT_CART = " INSERT INTO cart (cart_id,  user_id, quan"
+			+ "tity,,product_id) VALUES (?, ?, ?, ?)";
 	// End SQL Queries
 
 	// Register page
@@ -47,6 +49,7 @@ public class StringUtils {
 	// End register page messages
 
 	// Start login page message
+	public static final String PRODUCT_ATTRIBURE = "Products";
 	public static final String SUCCESS_LOGIN_MESSAGE = "Successfully LoggedIn!";
 	public static final String ERROR_LOGIN_MESSAGE = "Either username or password is not correct!";
 	// End login page message
@@ -65,7 +68,7 @@ public class StringUtils {
 	public static final String ADMIN_DASHBOARD = "/pages/AdminDashboard.jsp";
 	public static final String CART_PAGE = "/pages/Cart.jsp";
 	// End JSP Route
-
+	
 	// Start Servlet Route
 	public static final String REGISTER_SERVLET = "/RegisterServlet";
 	public static final String LOGIN_SERVLET = "/LoginServlet";

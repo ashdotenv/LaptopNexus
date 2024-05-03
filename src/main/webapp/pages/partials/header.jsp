@@ -34,6 +34,7 @@
 		<div class="text-[18px] font-bold *:p-2 ">
 			<a href="${pageContext.request.contextPath}/ProductServlet"><i
 				class="fa-solid fa-house"></i> Home</a>
+
 			<%
 			if (session.getAttribute("user") != null) {
 			%>
@@ -51,11 +52,10 @@
 			<a href="${pageContext.request.contextPath}/Login">Login <i
 				class="fa-solid fa-right-to-bracket"></i></a> <a
 				href="${pageContext.request.contextPath}/RegisterServlet">
-				Signup <i class="fa-solid fa-user-plus"></i>
+				Signup <i class="fa-solid fa-user-plus"></i> <%
+ }
+ %>
 			</a> <a href="${pageContext.request.contextPath}/AboutUs"> About Us</a>
-			<%
-			}
-			%>
 		</div>
 	</div>
 </div>

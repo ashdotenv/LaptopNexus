@@ -2,6 +2,7 @@ package controller;
 
 import java.sql.Connection;
 
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.CartModel;
 import model.ProductModel;
 import util.StringUtils;
 
@@ -140,6 +142,18 @@ public class DatabaseController {
 			System.out.println(e.getMessage());
 			return 0;
 		}
+	}
+
+	public int addToCart(CartModel cart) {
+		try (Connection con = getConnection();
+				PreparedStatement st = con.prepareStatement(StringUtils.INSERT_PRODUCT)) {
+			st.setInt(0, cart.getUser_id());
+			st.setInt(1, cart.getQuantity());
+			st.setInt(2, cart.getProduct_id());
+		} catch (SQLException | ClassNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+		return 1;
 	}
 
 }

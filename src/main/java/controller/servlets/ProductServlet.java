@@ -32,6 +32,9 @@ public class ProductServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// Normally The Url Looks Like this
+		// http://localhost:8000/LaptopNexus/ProductServlet
+		// This URL based
 		if (!(request.getRequestURI().split("/").length >= 4)) {
 			String search = request.getParameter("name");
 			try {
@@ -62,7 +65,6 @@ public class ProductServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		int maxPrice = Integer.parseInt(request.getParameter("maxPrice"));
 		int minPrice = Integer.parseInt(request.getParameter("minPrice"));
 		int category = Integer.parseInt(request.getParameter("category"));
@@ -72,7 +74,7 @@ public class ProductServlet extends HttpServlet {
 			request.setAttribute("Products", db.filterProducts(minPrice, maxPrice, category));
 		} catch (Exception e) {
 			e.printStackTrace();
-			request.setAttribute("error", "Failed to retrieve products: " + e.getMessage());
+			request.setAttribute(StringUtils.ERROR_MESSAGE, "Failed to retrieve products: " + e.getMessage());
 		}
 		request.getRequestDispatcher(StringUtils.PRODUCTS_PAGE).forward(request, response);
 	}
